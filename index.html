@@ -7,14 +7,24 @@
   </head>
   <body>
     <script>
-      const lang = navigator.language || navigator.userLanguage
-      if (lang.startsWith("en")) {
-        window.location.href = "/en/"
-      } else if (lang.startsWith("fr")) {
-        window.location.href = "/fr/"
+      const userLang = navigator.language || navigator.userLanguage
+
+      if (userLang.startsWith("en")) {
+        window.location.href = "en/"
+      } else if (userLang.startsWith("fr")) {
+        window.location.href = "fr/"
       } else {
-        window.location.href = "/es/"
+        window.location.href = "es/"
       }
     </script>
+
+    <noscript>
+      <p>Please enable JavaScript or select your language:</p>
+      <ul>
+        <li><a href="es/">Español</a></li>
+        <li><a href="en/">English</a></li>
+        <li><a href="fr/">Français</a></li>
+      </ul>
+    </noscript>
   </body>
 </html>
