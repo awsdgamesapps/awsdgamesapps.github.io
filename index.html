@@ -1,30 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AWSD Games & Apps</title>
-  </head>
-  <body>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a73e8 0%, #0d47a1 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
+        .loader {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 60px 50px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 550px;
+            width: 90%;
+        }
+        .loader h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+        }
+        .loader h1 span {
+            color: #00c853;
+        }
+        .loader p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top-color: #00c853;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin: 0 auto 20px;
+        }
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        .lang-links {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        .lang-links a {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            text-decoration: none;
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.25);
+            min-width: 120px;
+        }
+        .lang-links a:hover {
+            background: white;
+            color: #1a73e8;
+            border-color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        .lang-links a.primary {
+            background: #00c853;
+            border-color: #00c853;
+            font-size: 1.05rem;
+            padding: 14px 32px;
+        }
+        .lang-links a.primary:hover {
+            background: #00e676;
+            border-color: #00e676;
+            color: #0d47a1;
+        }
+    </style>
+</head>
+<body>
+    <div class="loader">
+        <h1>AWSD<span> Games & Apps</span></h1>
+        <p>Select your language / Selecciona tu idioma / Choisissez votre langue</p>
+        <div class="spinner" id="spinner"></div>
+        <div class="lang-links">
+            <a href="en/">English</a>
+            <a href="es/" class="primary">Español</a>
+            <a href="fr/">Français</a>
+        </div>
+    </div>
     <script>
-      const userLang = navigator.language || navigator.userLanguage
-
-      if (userLang.startsWith("en")) {
-        window.location.href = "en/"
-      } else if (userLang.startsWith("fr")) {
-        window.location.href = "fr/"
-      } else {
-        window.location.href = "es/"
-      }
+        const userLang = navigator.language || navigator.userLanguage;
+        const spinner = document.getElementById('spinner');
+        let redirectUrl = 'es/';
+        if (userLang.startsWith('en')) {
+            redirectUrl = 'en/';
+        } else if (userLang.startsWith('fr')) {
+            redirectUrl = 'fr/';
+        }
+        setTimeout(() => {
+            window.location.href = redirectUrl;
+        }, 1200);
     </script>
-
     <noscript>
-      <p>Please enable JavaScript or select your language:</p>
-      <ul>
-        <li><a href="es/">Español</a></li>
-        <li><a href="en/">English</a></li>
-        <li><a href="fr/">Français</a></li>
-      </ul>
+        <style>
+            .spinner {
+                display: none;
+            }
+        </style>
     </noscript>
-  </body>
+</body>
 </html>
